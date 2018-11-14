@@ -1,0 +1,221 @@
+<head>
+    <%- include('../../common/head', {title:'首页'}) %>
+    <link rel="stylesheet" href="/css/phone.css">
+</head>
+
+<body>
+    <%- include('../../common/header') %>
+    <div style="width:100%;background:rgb(214, 214, 214);margin-bottom: 30px;padding-top:30px;padding-bottom:30px;padding-left:18px;">
+        <h1>手机、电话号码查询</h1>
+        <p>手机、电话号码归属地查询，常用服务电话查询</p>
+    </div>
+    <div class="am-container phone" style="padding: 8px;">
+        <div class="am-u-lg-12" style="margin-bottom: 30px;text-align: center;">
+            <div class="am-input-group am-input-group-secondary" style="max-width: 420px;margin: auto;">
+                <input id="tel-input" type="text" class="am-form-field" placeholder="请输入要查的手机、电话号码">
+                <span class="am-input-group-btn">
+                    <button id="search-btn" class="am-btn am-btn-secondary" type="button">查询</button>
+                </span>
+            </div>
+            <div id="tel-warning" class="am-alert am-alert-warning" style="display: none;">
+                <p>手机号码不正确</p>
+            </div>
+        </div>
+        <table id="rest-group" class="am-table am-table-bordered am-table-radius am-table-striped" style="display:none;">
+            <tr>
+                <td>手机号</td>
+                <td id="rest-tel">-</td>
+            </tr>
+            <tr>
+                <td>所属省份</td>
+                <td id="rest-province">-</td>
+            </tr>
+            <tr>
+                <td>运营公司</td>
+                <td id="rest-cat">-</td>
+            </tr>
+            <tr>
+                <td>运营商</td>
+                <td id="rest-carrier">-</td>
+            </tr>
+            <tr>
+                <td>区域VID</td>
+                <td id="rest-areaid">-</td>
+            </tr>
+            <tr>
+                <td>运营商VID</td>
+                <td id="rest-ispid">-</td>
+            </tr>
+        </table>
+        <% 
+            data = {
+                '公共服务':[
+                    {name:'114查号台',tel:'114'}, 
+                    {name:'报警服务台',tel:'110'}, 
+                    {name:'火警',tel:'119'}, 
+                    {name:'急救中心',tel:'120'}, 
+                    {name:'红十字会急救台',tel:'999'}, 
+                    {name:'消费者投诉',tel:'12315'}, 
+                    {name:'天气预报',tel:'12121'}, 
+                    {name:'12580',tel:'12580'}, 
+                    {name:'法律服务',tel:'12348'}, 
+                    {name:'高速公路报警救援',tel:'12122'}, 
+                    {name:'公共卫生公益热线',tel:'12320'}, 
+                    {name:'供电服务',tel:'95598'}, 
+                    {name:'国土资源违法举报',tel:'12336'}, 
+                    {name:'环保投诉',tel:'12369'}, 
+                    {name:'价格举报',tel:'12358'}, 
+                    {name:'检察机关统一举报电话',tel:'12309'}, 
+                    {name:'交通事故报警',tel:'122'}, 
+                    {name:'纳税服务',tel:'12366'},
+                    {name:'青少年服务热线',tel:'12355'},
+                    {name:'全国住房公积金热线',tel:'12329'},
+                    {name:'市长专线',tel:'12345'},
+                    {name:'水上求救专用',tel:'12395'},
+                    {name:'质量监督',tel:'12333'},
+                    {name:'劳动保障政策咨询',tel:'12365'},
+                    {name:'中国妇联会',tel:'12338'},
+                ],
+                '酒店':[
+                    {name:'携程旅行网',	tel:'10106666'},
+                    {name:'去哪儿？',	tel:'10101234'},
+                    {name:'艺龙旅行网',	tel:'4006691155'},
+                    {name:'汉庭酒店',	tel:'4008121121'},
+                    {name:'锦江之星酒店',	tel:'4008209999'},
+                    {name:'布丁酒店',	tel:'4008802802'},
+                    {name:'莫泰酒店',	tel:'4008207168'},
+                    {name:'如家酒店',	tel:'4008203333'},
+                    {name:'7天连锁酒店',	tel:'4008740087'},
+                    {name:'格林豪泰酒店',	tel:'4006998998'},
+                    {name:'24K酒店',	tel:'4008886119'},
+                    {name:'桔子酒店',	tel:'4008190099'},
+                    {name:'速8酒店',	tel:'4001840018'},
+                    {name:'宜必思酒店',	tel:'4006001615'},
+                    {name:'香格里拉酒店',	tel:'4001205900'},
+                    {name:'喜来登酒店',	tel:'4008688688'},
+                ],
+                '银行':[
+                    {name:'中国银行',	tel:'95566'},
+                    {name:'工商银行',	tel:'95588'},
+                    {name:'建设银行',	tel:'95533'},
+                    {name:'农业银行',	tel:'95599'},
+                    {name:'招商银行',	tel:'95555'},
+                    {name:'交通银行',	tel:'95559'},
+                    {name:'邮政储蓄银行',	tel:'95580'},
+                    {name:'广发银行',	tel:'4008308003'},
+                    {name:'中信银行',	tel:'95558'},
+                    {name:'光大银行',	tel:'95595'},
+                    {name:'民生银行',	tel:'95568'},
+                    {name:'兴业银行',	tel:'95561'},
+                    {name:'浦发银行',	tel:'95528'},
+                    {name:'华夏银行',	tel:'95577'},
+                    {name:'北京银行',	tel:'95526'},
+                    {name:'中国银联',	tel:'95516'},
+                ],
+                '外卖送餐':[
+                    {name:'麦当劳麦乐送',	tel:'4008517517'},
+                    {name:'肯德基宅急送',	tel:'4008823823'},
+                    {name:'必胜客宅急送',	tel:'4008123123'},
+                    {name:'丽华快餐',	tel:'4008800400'},
+                    {name:'吉野家',	tel:'4008197197'},
+                    {name:'真功夫',	tel:'4006927927'},
+                    {name:'海底捞火锅',	tel:'4008107107'},
+                    {name:'眉州东坡酒楼',	tel:'4008527527'},
+                    {name:'德克士',	tel:'4006309907'},
+                    {name:'巴贝拉家家送',	tel:'4007787878'},
+                    {name:'棒约翰外送',	tel:'4008107272'},
+                    {name:'宏状元',	tel:'4006007000'},
+                    {name:'嘉和一品粥',	tel:'4001007008'},
+                    {name:'达美乐比萨',	tel:'4008825252'},
+                    {name:'永和大王',	tel:'4000979797'},
+                    {name:'味多美',	tel:'4006170170'},
+                ],
+                '快递物流':[
+                    {name:'中国邮政',	tel:'11185'},
+                    {name:'中国邮政EMS',	tel:'11183'},
+                    {name:'顺丰速运',	tel:'95338'},
+                    {name:'申通快递',	tel:'95543'},
+                    {name:'圆通速递',	tel:'95554'},
+                    {name:'中通快递',	tel:'95311'},
+                    {name:'百世汇通',	tel:'4009565656'},
+                    {name:'韵达快递',	tel:'95546'},
+                    {name:'宅急送',	tel:'4006789000'},
+                    {name:'德邦物流',	tel:'95353'},
+                    {name:'天天快递',	tel:'4001888888'},
+                    {name:'全峰快递',	tel:'4001000001'},
+                    {name:'DHL快递',	tel:'4008108000'},
+                    {name:'佳吉快运',	tel:'4008205566'},
+                    {name:'中铁快运',	tel:'95572'},
+                    {name:'如风达',	tel:'4000106660'},
+                    {name:'联邦快递',	tel:'4008861888'},
+                    {name:'天地华宇',	tel:'4008086666'},
+                    {name:'UPS快运',	tel:'4008208388'},
+                ]
+            }
+        %>
+        <div class="am-tabs" data-am-tabs>
+            <ul class="am-tabs-nav am-nav am-nav-tabs">
+                <!-- class="am-active" -->
+                <% for(var key in data){ %>
+                <li><a href="#<%=key%>">
+                        <%=key%></a></li>
+                <% } %>
+            </ul>
+
+            <div class="am-tabs-bd">
+                <% for(var key in data){ %>
+                <div class="am-tab-panel am-fade" id="<%= key %>">
+                    <table class="am-table am-table-bordered am-table-radius am-table-striped">
+                        <tbody>
+                            <% for(var j=0; j<data[key].length;j++){ %>
+                            <tr>
+                                <td>
+                                    <%= data[key][j].name %>
+                                </td>
+                                <td>
+                                    <%= data[key][j].tel %>
+                                </td>
+                            </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+
+    <%- include('../../common/body') %>
+    <%- include('../../common/footer') %>
+</body>
+
+<script>
+    $(document).ready(function () {
+        $('#search-btn').click(function () {
+            var tel = $('#tel-input').val();
+            $.ajax({
+                url: 'http://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel=' + tel,
+                type: "GET",
+                dataType: "jsonp", //指定服务器返回的数据类型
+                success: function (data) {
+                    var result = JSON.stringify(data); //json对象转成字符串
+                    console.log(data);
+                    if(data && data.mts){
+                        $('#rest-tel').text(data.telString);
+                        $('#rest-province').text(data.province);
+                        $('#rest-cat').text(data.catName);
+                        $('#rest-carrier').text(data.carrier);
+                        $('#rest-areaid').text(data.areaVid);
+                        $('#rest-ispid').text(data.ispVid);
+                        $('#tel-warning').hide();
+                        $('#rest-group').show();
+                    }
+                    else{
+                        $('#tel-warning').show();
+                        $('#rest-group').hide();
+                    }
+                }
+            });
+        });
+    });
+</script>

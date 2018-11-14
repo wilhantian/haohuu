@@ -1,0 +1,109 @@
+<head>
+    <%- include('../../common/head', {title:'首页'}) %>
+    <link rel="stylesheet" href="/css/phone.css">
+</head>
+
+<body>
+    <%- include('../../common/header') %>
+    <div style="width:100%;background:rgb(214, 214, 214);margin-bottom: 30px;padding-top:30px;padding-bottom:30px;padding-left:18px;">
+        <h1>手机、电话号码查询</h1>
+        <p>手机、电话号码归属地查询，常用服务电话查询</p>
+    </div>
+    <div class="am-container imageholder" style="padding: 8px;">
+        <div class="am-g">
+            <div class="am-input-group am-u-sm-12 am-u-md-5 am-u-sm-centered">
+                <span class="am-input-group-label">图片宽度</span>
+                <input id="it-width" type="text" class="am-form-field" placeholder="200" value="200">
+                <span class="am-input-group-label">px</span>
+            </div>
+            <div class="am-input-group am-u-sm-12 am-u-md-5 am-u-sm-centered">
+                <span class="am-input-group-label">图片高度</span>
+                <input id="it-height" type="text" class="am-form-field" placeholder="200" value="200">
+                <span class="am-input-group-label">px</span>
+            </div>
+            <div class="am-input-group am-u-sm-12 am-u-md-5 am-u-sm-centered">
+                <span class="am-input-group-label">背景颜色</span>
+                <input id="it-bg" type="text" class="am-form-field" placeholder="#cccccc">
+            </div>
+            <div class="am-input-group am-u-sm-12 am-u-md-5 am-u-sm-centered">
+                <span class="am-input-group-label">显示文字</span>
+                <input id="it-text" type="text" class="am-form-field" placeholder="可自定义图片上的文字">
+            </div>
+            <div class="am-input-group am-u-sm-12 am-u-md-5 am-u-sm-centered">
+                <span class="am-input-group-label">文字颜色</span>
+                <input id="it-text-color" type="text" class="am-form-field" placeholder="#7d7d7d">
+            </div>
+            <div class="am-input-group am-u-sm-12 am-u-md-5 am-u-sm-centered am-margin">
+                <button id="create-btn" type="button" class="am-btn am-btn-success am-btn-block">生成图片</button>
+            </div>
+            <div class="image-container" style="max-height: 200px;overflow: auto;text-align: center;margin-bottom:12px;">
+                <img id="preview_img" src="http://via.placeholder.com/200x200">
+            </div>
+            <div class="am-input-group am-u-sm-12 am-u-md-5 am-u-sm-centered"></div>
+                <p style="text-align: center;">
+                    引用地址: 
+                    <label id="url-text">http://via.placeholder.com/200x200</label>
+                    <a id="copy-btn" style="text-align: center;" href="#">一键复制</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <%- include('../../common/body') %>
+    <%- include('../../common/footer') %>
+</body>
+
+<script>
+    $(document).ready(function () {
+        $('#create-btn').click(function(){
+            var width = $('#it-width').val() || 200;
+            var height = $('#it-height').val() || 200;
+            var bg = $('#it-bg').val() || '#cccccc';
+            var text = $('#it-text').val() || undefined;
+            var textColor = $('#it-text-color').val() || undefined;
+            if(bg){
+                var index = bg.indexOf('#');
+                if(index >= 0){
+                    bg = bg.substr(index+1);
+                }
+            }
+            if(textColor){
+                var index = textColor.indexOf('#');
+                if(index >= 0){
+                    textColor = textColor.substr(index+1);
+                }
+            }
+
+            var url = 'http://via.placeholder.com/'+width+'x'+height;
+            if(bg){
+                url += '/' + bg;
+            }
+            if(text){
+                if(!textColor){
+                    textColor = '7d7d7d'
+                }
+                url += '/' + textColor + '?Text='+text;
+            }
+            $('#preview_img').attr('src', url);
+            $('#url-text').text(url);
+        });
+        $('#copy-btn').click(function(){
+            var url = $('#url-text').text();
+            if(url){
+                copyText(url);
+            }
+        });
+    });
+    function copyText(text)
+    {
+        var Url2=text;
+        var oInput = document.createElement('input');
+        oInput.value = Url2;
+        document.body.appendChild(oInput);
+        oInput.select(); // 选择对象
+        document.execCommand("Copy"); // 执行浏览器复制命令
+        oInput.className = 'oInput';
+        oInput.style.display='none';
+        alert('复制成功');
+    }
+</script>

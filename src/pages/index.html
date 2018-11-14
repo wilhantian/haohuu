@@ -1,0 +1,53 @@
+<head>
+    <%- include('../common/head', {title:'首页'}) %>
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+
+<body>
+    <%- include('../common/header') %>
+    <div style="width:100%;background:rgb(214, 214, 214);margin-bottom: 30px;padding-top:30px;padding-bottom:30px;padding-left:18px;">
+        <h1>电子电路在线工具</h1>
+        <p>最好用的免费电子电路在线工具</p>
+    </div>
+    <div class="am-container">
+        <div class="am-g">
+            <div class="am-u-sm-12 am-u-md-4">
+                <a class="tool-card" href="/tools/phone.html">
+                    <div class="title">
+                        <img src="http://iph.href.lu/100x100">
+                        <div class="title-right">
+                            <h3>手机、电话号码查询</h3>
+                            <small>手机、电话号码查询，常用服务电话查询</small>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="am-u-sm-12 am-u-md-4">
+                    <a class="tool-card" href="/tools/imageholder.html">
+                        <div class="title">
+                            <img src="http://iph.href.lu/100x100">
+                            <div class="title-right">
+                                <h3>占位图片</h3>
+                                <small>在线生成占位图片、链接</small>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            <% for(var i=0; i<20;i++){ %>
+            <div class="am-u-sm-12 am-u-md-4">
+                <a class="tool-card" href="/tools/5sehuandianzu.html">
+                    <div class="title">
+                        <img src="http://iph.href.lu/100x100">
+                        <div class="title-right">
+                            <h3>电池使用寿命在线计算器</h3>
+                            <small>电池使用寿命在线计算器</small>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <% } %>
+        </div>
+    </div>
+    <%- include('../common/body') %>
+    <%- include('../common/footer') %>
+</body>
