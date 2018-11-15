@@ -1,0 +1,1093 @@
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>
+  手机、电话号码查询
+</title>
+
+<!-- Set render engine for 360 browser -->
+<meta name="renderer" content="webkit">
+
+<!-- No Baidu Siteapp-->
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<link rel="icon" type="image/png" href="/assets/i/favicon.ico">
+
+<!-- Add to homescreen for Chrome on Android -->
+<meta name="mobile-web-app-capable" content="yes">
+<!-- <link rel="icon" sizes="192x192" href="/assets/i/app-icon72x72@2x.png"> -->
+
+<!-- Add to homescreen for Safari on iOS -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="好乎" />
+<!-- <link rel="apple-touch-icon-precomposed" href="/assets/i/app-icon72x72@2x.png"> -->
+
+<!-- Tile icon for Win8 (144x144 + tile color) -->
+<!-- <meta name="msapplication-TileImage" content="/assets/i/app-icon72x72@2x.png"> -->
+<meta name="msapplication-TileColor" content="#0e90d2">
+
+<link rel="stylesheet" href="/assets/css/amazeui.min.css">
+<link rel="stylesheet" href="/assets/css/app.css">
+<link rel="stylesheet" href="/css/header.css">
+<link rel="stylesheet" href="/css/footer.css">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_920780_tadqyilsans.css">
+
+<script>
+  (function () {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+<script>
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?2d483b926e6495d9a1dff24442ef08ed";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-3679359120465431",
+          enable_page_level_ads: true
+     });
+</script>
+    <link rel="stylesheet" href="/css/phone.css">
+    <meta name="keywords" content="手机号码归属地,电话号码查询">
+    <meta name="description" content="手机号码归属地,电话号码归属地查询,常用服务电话查询">
+</head>
+
+<body>
+    <header class="am-topbar am-topbar-inverse header">
+    <h1 class="am-topbar-brand">
+        <a href="/">好乎在线工具</a>
+    </h1>
+    <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse">
+        <ul class="am-nav am-nav-pills am-topbar-nav">
+            <li class="am-active"><a href="/">首页</a></li>
+            <!-- <li><a href="#">项目</a></li>
+            <li class="am-dropdown" data-am-dropdown>
+                <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
+                    下拉 <span class="am-icon-caret-down"></span>
+                </a>
+                <ul class="am-dropdown-content">
+                    <li class="am-dropdown-header">标题</li>
+                    <li><a href="#">1. 去月球</a></li>
+                    <li class="am-active"><a href="#">2. 去火星</a></li>
+                    <li><a href="#">3. 还是回地球</a></li>
+                    <li class="am-disabled"><a href="#">4. 下地狱</a></li>
+                    <li class="am-divider"></li>
+                    <li><a href="#">5. 桥头一回首</a></li>
+                </ul>
+            </li> -->
+        </ul>
+    </div>
+</header>
+    <div style="width:100%;background:#43b5ef;margin-bottom: 30px;padding-top:30px;padding-bottom:30px;">
+    <h1 style="color:#333;text-align: center;">手机、电话号码查询</h1>
+    <p style="color:#fff;text-align: center;">手机、电话号码归属地查询，常用服务电话查询</p>
+</div>
+    <div class="am-container phone" style="padding: 8px;">
+        <div class="am-u-lg-12" style="margin-bottom: 30px;text-align: center;">
+            <div class="am-input-group am-input-group-secondary" style="max-width: 420px;margin: auto;">
+                <input id="tel-input" type="text" class="am-form-field" placeholder="请输入要查的手机、电话号码">
+                <span class="am-input-group-btn">
+                    <button id="search-btn" class="am-btn am-btn-secondary" type="button">查询</button>
+                </span>
+            </div>
+            <div id="tel-warning" class="am-alert am-alert-warning" style="display: none;">
+                <p>手机号码不正确</p>
+            </div>
+        </div>
+        <table id="rest-group" class="am-table am-table-bordered am-table-radius am-table-striped" style="display:none;">
+            <tr>
+                <td>手机号</td>
+                <td id="rest-tel">-</td>
+            </tr>
+            <tr>
+                <td>所属省份</td>
+                <td id="rest-province">-</td>
+            </tr>
+            <tr>
+                <td>运营公司</td>
+                <td id="rest-cat">-</td>
+            </tr>
+            <tr>
+                <td>运营商</td>
+                <td id="rest-carrier">-</td>
+            </tr>
+            <tr>
+                <td>区域VID</td>
+                <td id="rest-areaid">-</td>
+            </tr>
+            <tr>
+                <td>运营商VID</td>
+                <td id="rest-ispid">-</td>
+            </tr>
+        </table>
+        
+        <div class="am-tabs" data-am-tabs>
+            <ul class="am-tabs-nav am-nav am-nav-tabs">
+                <!-- class="am-active" -->
+                
+                <li><a href="#公共服务">
+                        公共服务</a></li>
+                
+                <li><a href="#酒店">
+                        酒店</a></li>
+                
+                <li><a href="#银行">
+                        银行</a></li>
+                
+                <li><a href="#外卖送餐">
+                        外卖送餐</a></li>
+                
+                <li><a href="#快递物流">
+                        快递物流</a></li>
+                
+            </ul>
+
+            <div class="am-tabs-bd">
+                
+                <div class="am-tab-panel am-fade" id="公共服务">
+                    <table class="am-table am-table-bordered am-table-radius am-table-striped">
+                        <tbody>
+                            
+                            <tr>
+                                <td>
+                                    114查号台
+                                </td>
+                                <td>
+                                    114
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    报警服务台
+                                </td>
+                                <td>
+                                    110
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    火警
+                                </td>
+                                <td>
+                                    119
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    急救中心
+                                </td>
+                                <td>
+                                    120
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    红十字会急救台
+                                </td>
+                                <td>
+                                    999
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    消费者投诉
+                                </td>
+                                <td>
+                                    12315
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    天气预报
+                                </td>
+                                <td>
+                                    12121
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    12580
+                                </td>
+                                <td>
+                                    12580
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    法律服务
+                                </td>
+                                <td>
+                                    12348
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    高速公路报警救援
+                                </td>
+                                <td>
+                                    12122
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    公共卫生公益热线
+                                </td>
+                                <td>
+                                    12320
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    供电服务
+                                </td>
+                                <td>
+                                    95598
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    国土资源违法举报
+                                </td>
+                                <td>
+                                    12336
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    环保投诉
+                                </td>
+                                <td>
+                                    12369
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    价格举报
+                                </td>
+                                <td>
+                                    12358
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    检察机关统一举报电话
+                                </td>
+                                <td>
+                                    12309
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    交通事故报警
+                                </td>
+                                <td>
+                                    122
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    纳税服务
+                                </td>
+                                <td>
+                                    12366
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    青少年服务热线
+                                </td>
+                                <td>
+                                    12355
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    全国住房公积金热线
+                                </td>
+                                <td>
+                                    12329
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    市长专线
+                                </td>
+                                <td>
+                                    12345
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    水上求救专用
+                                </td>
+                                <td>
+                                    12395
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    质量监督
+                                </td>
+                                <td>
+                                    12333
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    劳动保障政策咨询
+                                </td>
+                                <td>
+                                    12365
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    中国妇联会
+                                </td>
+                                <td>
+                                    12338
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="am-tab-panel am-fade" id="酒店">
+                    <table class="am-table am-table-bordered am-table-radius am-table-striped">
+                        <tbody>
+                            
+                            <tr>
+                                <td>
+                                    携程旅行网
+                                </td>
+                                <td>
+                                    10106666
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    去哪儿？
+                                </td>
+                                <td>
+                                    10101234
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    艺龙旅行网
+                                </td>
+                                <td>
+                                    4006691155
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    汉庭酒店
+                                </td>
+                                <td>
+                                    4008121121
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    锦江之星酒店
+                                </td>
+                                <td>
+                                    4008209999
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    布丁酒店
+                                </td>
+                                <td>
+                                    4008802802
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    莫泰酒店
+                                </td>
+                                <td>
+                                    4008207168
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    如家酒店
+                                </td>
+                                <td>
+                                    4008203333
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    7天连锁酒店
+                                </td>
+                                <td>
+                                    4008740087
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    格林豪泰酒店
+                                </td>
+                                <td>
+                                    4006998998
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    24K酒店
+                                </td>
+                                <td>
+                                    4008886119
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    桔子酒店
+                                </td>
+                                <td>
+                                    4008190099
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    速8酒店
+                                </td>
+                                <td>
+                                    4001840018
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    宜必思酒店
+                                </td>
+                                <td>
+                                    4006001615
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    香格里拉酒店
+                                </td>
+                                <td>
+                                    4001205900
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    喜来登酒店
+                                </td>
+                                <td>
+                                    4008688688
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="am-tab-panel am-fade" id="银行">
+                    <table class="am-table am-table-bordered am-table-radius am-table-striped">
+                        <tbody>
+                            
+                            <tr>
+                                <td>
+                                    中国银行
+                                </td>
+                                <td>
+                                    95566
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    工商银行
+                                </td>
+                                <td>
+                                    95588
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    建设银行
+                                </td>
+                                <td>
+                                    95533
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    农业银行
+                                </td>
+                                <td>
+                                    95599
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    招商银行
+                                </td>
+                                <td>
+                                    95555
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    交通银行
+                                </td>
+                                <td>
+                                    95559
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    邮政储蓄银行
+                                </td>
+                                <td>
+                                    95580
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    广发银行
+                                </td>
+                                <td>
+                                    4008308003
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    中信银行
+                                </td>
+                                <td>
+                                    95558
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    光大银行
+                                </td>
+                                <td>
+                                    95595
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    民生银行
+                                </td>
+                                <td>
+                                    95568
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    兴业银行
+                                </td>
+                                <td>
+                                    95561
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    浦发银行
+                                </td>
+                                <td>
+                                    95528
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    华夏银行
+                                </td>
+                                <td>
+                                    95577
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    北京银行
+                                </td>
+                                <td>
+                                    95526
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    中国银联
+                                </td>
+                                <td>
+                                    95516
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="am-tab-panel am-fade" id="外卖送餐">
+                    <table class="am-table am-table-bordered am-table-radius am-table-striped">
+                        <tbody>
+                            
+                            <tr>
+                                <td>
+                                    麦当劳麦乐送
+                                </td>
+                                <td>
+                                    4008517517
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    肯德基宅急送
+                                </td>
+                                <td>
+                                    4008823823
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    必胜客宅急送
+                                </td>
+                                <td>
+                                    4008123123
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    丽华快餐
+                                </td>
+                                <td>
+                                    4008800400
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    吉野家
+                                </td>
+                                <td>
+                                    4008197197
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    真功夫
+                                </td>
+                                <td>
+                                    4006927927
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    海底捞火锅
+                                </td>
+                                <td>
+                                    4008107107
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    眉州东坡酒楼
+                                </td>
+                                <td>
+                                    4008527527
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    德克士
+                                </td>
+                                <td>
+                                    4006309907
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    巴贝拉家家送
+                                </td>
+                                <td>
+                                    4007787878
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    棒约翰外送
+                                </td>
+                                <td>
+                                    4008107272
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    宏状元
+                                </td>
+                                <td>
+                                    4006007000
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    嘉和一品粥
+                                </td>
+                                <td>
+                                    4001007008
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    达美乐比萨
+                                </td>
+                                <td>
+                                    4008825252
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    永和大王
+                                </td>
+                                <td>
+                                    4000979797
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    味多美
+                                </td>
+                                <td>
+                                    4006170170
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="am-tab-panel am-fade" id="快递物流">
+                    <table class="am-table am-table-bordered am-table-radius am-table-striped">
+                        <tbody>
+                            
+                            <tr>
+                                <td>
+                                    中国邮政
+                                </td>
+                                <td>
+                                    11185
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    中国邮政EMS
+                                </td>
+                                <td>
+                                    11183
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    顺丰速运
+                                </td>
+                                <td>
+                                    95338
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    申通快递
+                                </td>
+                                <td>
+                                    95543
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    圆通速递
+                                </td>
+                                <td>
+                                    95554
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    中通快递
+                                </td>
+                                <td>
+                                    95311
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    百世汇通
+                                </td>
+                                <td>
+                                    4009565656
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    韵达快递
+                                </td>
+                                <td>
+                                    95546
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    宅急送
+                                </td>
+                                <td>
+                                    4006789000
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    德邦物流
+                                </td>
+                                <td>
+                                    95353
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    天天快递
+                                </td>
+                                <td>
+                                    4001888888
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    全峰快递
+                                </td>
+                                <td>
+                                    4001000001
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    DHL快递
+                                </td>
+                                <td>
+                                    4008108000
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    佳吉快运
+                                </td>
+                                <td>
+                                    4008205566
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    中铁快运
+                                </td>
+                                <td>
+                                    95572
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    如风达
+                                </td>
+                                <td>
+                                    4000106660
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    联邦快递
+                                </td>
+                                <td>
+                                    4008861888
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    天地华宇
+                                </td>
+                                <td>
+                                    4008086666
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    UPS快运
+                                </td>
+                                <td>
+                                    4008208388
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a
+  href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+  以获得更好的体验！</p>
+<![endif]-->
+
+<!-- 页面内容 开发时删除 -->
+<!-- 以上页面内容 开发时删除 -->
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<!-- <script src="assets/js/jquery.min.js"></script> -->
+<!--<![endif]-->
+<script src="/assets/js/amazeui.min.js"></script>
+    <footer class="footer">
+    <p>Copyright © 2014-2018 www.haohuu.com 版权所有</p>
+</footer>
+</body>
+
+<script>
+    $(document).ready(function () {
+        $('#search-btn').click(function () {
+            var tel = $('#tel-input').val();
+            $.ajax({
+                url: 'http://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel=' + tel,
+                type: "GET",
+                dataType: "jsonp", //指定服务器返回的数据类型
+                success: function (data) {
+                    var result = JSON.stringify(data); //json对象转成字符串
+                    console.log(data);
+                    if(data && data.mts){
+                        $('#rest-tel').text(data.telString);
+                        $('#rest-province').text(data.province);
+                        $('#rest-cat').text(data.catName);
+                        $('#rest-carrier').text(data.carrier);
+                        $('#rest-areaid').text(data.areaVid);
+                        $('#rest-ispid').text(data.ispVid);
+                        $('#tel-warning').hide();
+                        $('#rest-group').show();
+                    }
+                    else{
+                        $('#tel-warning').show();
+                        $('#rest-group').hide();
+                    }
+                }
+            });
+        });
+    });
+</script>

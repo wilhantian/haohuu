@@ -1,20 +1,30 @@
 <head>
-    <%- include('../common/head', {title:'首页'}) %>
+    <%- include('../common/head', {title:'在线工具-好乎'}) %>
     <link rel="stylesheet" href="/css/index.css">
+    <meta name="keywords" content="在线工具,程序员,工具,占位图片,在线尺子,微信对话生成器,站长工具,手机号查询,5色环电阻阻值计算">
+    <meta name="description" content="在线工具,开发人员工具,手机号查询,微信对话生成器,计算器,5色环电阻阻值计算,占位图片在线制作">
 </head>
 
 <body>
     <%- include('../common/header') %>
-    <div style="width:100%;background:rgb(214, 214, 214);margin-bottom: 30px;padding-top:30px;padding-bottom:30px;padding-left:18px;">
-        <h1>电子电路在线工具</h1>
-        <p>最好用的免费电子电路在线工具</p>
-    </div>
-    <div class="am-container">
+    <%- include('../common/banner', {title: '在线工具', desc: '好乎——最好用在线工具'}) %>
+    <div class="am-container" style="min-height: 300px;">
         <div class="am-g">
+            <div class="am-u-sm-12 am-u-md-4">
+                <a class="tool-card" href="/tools/wechat.html">
+                    <div class="title">
+                        <div class="iconfont icon-weixin" style="background: #56c13b;"></div>
+                        <div class="title-right">
+                            <h3>微信对话生成器(无水印)</h3>
+                            <small>微信对话生成器|微信对话生成器在线|微信聊天生成器</small>
+                        </div>
+                    </div>
+                </a>
+            </div>
             <div class="am-u-sm-12 am-u-md-4">
                 <a class="tool-card" href="/tools/phone.html">
                     <div class="title">
-                        <img src="http://iph.href.lu/100x100">
+                        <div class="iconfont icon-shouji"></div>
                         <div class="title-right">
                             <h3>手机、电话号码查询</h3>
                             <small>手机、电话号码查询，常用服务电话查询</small>
@@ -23,17 +33,28 @@
                 </a>
             </div>
             <div class="am-u-sm-12 am-u-md-4">
-                    <a class="tool-card" href="/tools/imageholder.html">
-                        <div class="title">
-                            <img src="http://iph.href.lu/100x100">
-                            <div class="title-right">
-                                <h3>占位图片</h3>
-                                <small>在线生成占位图片、链接</small>
-                            </div>
+                <a class="tool-card" href="/tools/imageholder.html">
+                    <div class="title">
+                        <div class="iconfont icon-bitmap" style="background: #4cb4e7;"></div>
+                        <div class="title-right">
+                            <h3>占位图片</h3>
+                            <small>在线生成占位图片、链接</small>
                         </div>
-                    </a>
-                </div>
-            <% for(var i=0; i<20;i++){ %>
+                    </div>
+                </a>
+            </div>
+            <div class="am-u-sm-12 am-u-md-4">
+                <a class="tool-card" href="/tools/5sehuandianzu.html">
+                    <div class="title">
+                        <div class="iconfont icon-dianzi" style="background: #434664;"></div>
+                        <div class="title-right">
+                            <h3>5色环电阻阻值计算</h3>
+                            <small>在线5色环电阻阻值计算</small>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <% for(var i=0; i<0;i++){ %>
             <div class="am-u-sm-12 am-u-md-4">
                 <a class="tool-card" href="/tools/5sehuandianzu.html">
                     <div class="title">
