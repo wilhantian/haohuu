@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta name="keywords" content="手机,电量,手机还有多久关机,手机剩余电量,在线,小工具,电量查询">
+    <meta name="description" content="在线看手机剩余电量、电量剩余使用时间、查看是否正在充电">
+    <%- include('../../common/head', {title:'手机电量查询工具-在线看手机剩余电量'}) %>
+</head>
+
+<body>
+    <%- include('../../common/header', {title: '手机电量查询工具', desc: '在线看手机剩余电量、电量剩余使用时间、查看是否正在充电',  bigBanner:false}) %>
+    <div class="size am-container" style="margin-bottom: 24px;">
+        <div class="am-g">
+            <div class="am-u-sm-12 am-u-lg-8 am-u-sm-centered">
+                <h3>剩余电量:</h3>
+                <div class="am-progress" style="background:#fff;">
+                    <div id="bar" class="am-progress-bar am-progress-bar-success" style="width: 30%">30%</div>
+                </div>
+                <h3>电池充电状态: <span id="status">充电中</span></h3>
+                <h3 id="dischargingTime">剩余可用时间: 1小时30分钟</h3>
+                <h3 id="chargingTime">电池充满时间: 1小时30分钟</h3>
+                <blockquote>
+                    此工具可查看大部分手机、部分笔记本电脑剩余电量
+                </blockquote>
+            </div>
+        </div>
+    </div>
+    <%- include('../../common/recoms', {tools:tools}) %>
+    <%- include('../../common/body') %>
+    <%- include('../../common/footer') %>
+</body>
+
+</html>
+
+<script>
+</script>
+
+<script>
+    if (navigator.getBattery) {
+        navigator.getBattery().then(function (battery) {
+            var charging = battery.charging;
+            var chargingTime = battery.chargingTime;
+            var dischargingTime = battery.dischargingTime;
+            var level = battery.level;
+
+            $('#bar').text(level * 100 + '%');
+            $('#bar').css('width', level * 100 + '%');
+
+            if (charging == Infinity || charging === null || charging === undefined) {
+                $('#chargingTime').hide();
+                $('#dischargingTime').hide();
+                $('#status').text('未知');
+                return;
+            }
+
+            if (charging) {
+                $('#status').text('充电中');
+                if (level >= 1) {
+                    $('#chargingTime').text('电池充满时间: 已充满');
+                }
+                else {
+                    var m = parseInt(chargingTime / 60);
+                    $('#chargingTime').text('电池充满时间: ' + m + '分钟');
+                }
+                $('#dischargingTime').hide();
+            }
+            else {
+                $('#status').text('使用中(未充电)');
+                if (Infinity == dischargingTime || dischargingTime == null) {
+                    $('#dischargingTime').text('剩余可用时间: 未知');
+                }
+                else {
+                    var m = parseInt(dischargingTime / 60);
+                    $('#dischargingTime').text('剩余可用时间: ' + m + '分钟');
+                }
+                $('#chargingTime').hide();
+            }
+            console.log(battery);
+        });
+    }
+    else {
+        console.log('不支持');
+    }
+</script>

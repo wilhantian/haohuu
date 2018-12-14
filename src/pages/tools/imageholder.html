@@ -1,13 +1,16 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
 <head>
-    <%- include('../../common/head', {title:'占位图片'}) %>
-    <link rel="stylesheet" href="/css/phone.css">
     <meta name="keywords" content="占位图片,前端占位图片,image holder">
     <meta name="description" content="占位图片,image holder,占位图片生成">
+    <%- include('../../common/head', {title:'占位图片'}) %>
+    <link rel="stylesheet" href="/css/phone.css">
 </head>
 
 <body>
-    <%- include('../../common/header') %>
-    <%- include('../../common/banner', {title: '占位图片生成器', desc: '在线生成占位图片、链接'}) %>
+    <%- include('../../common/header', {title: '占位图片生成器', desc: '在线生成占位图片、链接',  bigBanner:false}) %>
+    <!-- <%- include('../../common/banner', {title: '占位图片生成器', desc: '在线生成占位图片、链接'}) %> -->
     <div class="am-container imageholder" style="padding: 8px;">
         <div class="am-g">
             <div class="am-input-group am-u-sm-12 am-u-md-5 am-u-sm-centered">
@@ -39,70 +42,71 @@
                 <img id="preview_img" src="http://via.placeholder.com/200x200">
             </div>
             <div class="am-input-group am-u-sm-12 am-u-md-5 am-u-sm-centered"></div>
-                <p style="text-align: center;">
-                    引用地址: 
-                    <label id="url-text">http://via.placeholder.com/200x200</label>
-                    <a id="copy-btn" style="text-align: center;" href="#">一键复制</a>
-                </p>
-            </div>
+            <p style="text-align: center;">
+                引用地址:
+                <label id="url-text">http://via.placeholder.com/200x200</label>
+                <a id="copy-btn" style="text-align: center;" href="#">一键复制</a>
+            </p>
         </div>
     </div>
-
+    </div>
+    <%- include('../../common/recoms', {tools:tools}) %>
     <%- include('../../common/body') %>
     <%- include('../../common/footer') %>
 </body>
 
 <script>
     $(document).ready(function () {
-        $('#create-btn').click(function(){
+        $('#create-btn').click(function () {
             var width = $('#it-width').val() || 200;
             var height = $('#it-height').val() || 200;
             var bg = $('#it-bg').val() || '#cccccc';
             var text = $('#it-text').val() || undefined;
             var textColor = $('#it-text-color').val() || undefined;
-            if(bg){
+            if (bg) {
                 var index = bg.indexOf('#');
-                if(index >= 0){
-                    bg = bg.substr(index+1);
+                if (index >= 0) {
+                    bg = bg.substr(index + 1);
                 }
             }
-            if(textColor){
+            if (textColor) {
                 var index = textColor.indexOf('#');
-                if(index >= 0){
-                    textColor = textColor.substr(index+1);
+                if (index >= 0) {
+                    textColor = textColor.substr(index + 1);
                 }
             }
 
-            var url = 'http://via.placeholder.com/'+width+'x'+height;
-            if(bg){
+            var url = 'http://via.placeholder.com/' + width + 'x' + height;
+            if (bg) {
                 url += '/' + bg;
             }
-            if(text){
-                if(!textColor){
+            if (text) {
+                if (!textColor) {
                     textColor = '7d7d7d'
                 }
-                url += '/' + textColor + '?Text='+text;
+                url += '/' + textColor + '?Text=' + text;
             }
             $('#preview_img').attr('src', url);
             $('#url-text').text(url);
         });
-        $('#copy-btn').click(function(){
+        $('#copy-btn').click(function () {
             var url = $('#url-text').text();
-            if(url){
+            if (url) {
                 copyText(url);
             }
         });
     });
-    function copyText(text)
-    {
-        var Url2=text;
+    function copyText(text) {
+        var Url2 = text;
         var oInput = document.createElement('input');
         oInput.value = Url2;
         document.body.appendChild(oInput);
         oInput.select(); // 选择对象
         document.execCommand("Copy"); // 执行浏览器复制命令
         oInput.className = 'oInput';
-        oInput.style.display='none';
+        oInput.style.display = 'none';
         alert('复制成功');
     }
 </script>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta name="keywords" content="时间,当前时间,几点了,现在几点了,今天周几,今天几号,几月">
+    <meta name="description" content="不知道现在的时间？就用这款在线时钟工具吧">
+    <%- include('../../common/head', {title:'CSDN极致去广告'}) %>
+
+    <style>
+    </style>
+</head>
+
+<body>
+    <%- include('../../common/header', {title: 'CSDN极致去广告', desc: 'xx',  bigBanner:false}) %>
+
+    <iframe id="br" src="https://greasyfork.org/zh-CN/scripts/368155-csdn%E6%9E%81%E8%87%B4%E5%8E%BB%E5%B9%BF%E5%91%8A" style="width:100%;min-height: 600px;height:99vh;"></iframe>
+    <%- include('../../common/recoms', {tools:tools}) %>
+    <%- include('../../common/body') %>
+    <%- include('../../common/footer') %>
+</body>
+
+</html>
+
+<script>
+    debugger;
+    console.log('init');
+    var x = $('#br')[0];
+    x.onload = function(){
+        debugger;
+        alert('load');
+        window.x = x.contentWindow || x.contentDocument;
+    };
+</script>

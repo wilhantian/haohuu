@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <%- include('../../common/head', {title:'自用工具'}) %>
+    <script src="https://unpkg.com/crypto-js@3.1.9-1/crypto-js.js"></script>
+    <style>
+    </style>
+</head>
+
+<body>
+    <%- include('../../common/header', {title: '自用工具', desc: 'xx',  bigBanner:false}) %>
+    <div class="size am-container" style="margin-bottom: 24px;">
+        <div class="am-input-group am-input-group-success am-u-sm-10 am-u-lg-6 am-u-sm-centered">
+            <input id="key" placeholder="秘钥" value="wxmpdownload_az8525722_" type="text" class="am-form-field"/>
+            <input id="id" placeholder="机器码" type="text" class="am-form-field"/>
+            <button id="go" class="am-btn am-btn-default am-btn-success" type="button">计算</button>
+            <p id="result"></p>
+        </div>
+    </div>
+    <%- include('../../common/recoms', {tools:tools}) %>
+    <%- include('../../common/body') %>
+    <%- include('../../common/footer') %>
+</body>
+
+</html>
+
+<script>
+    $('#go').click(function () {
+        var K = $('#key').val().trim();
+        var I = $('#id').val().trim();
+        var res = CryptoJS.MD5(CryptoJS.MD5(K + I).toString()).toString();
+
+        $('#result').text(res);
+    });
+</script>

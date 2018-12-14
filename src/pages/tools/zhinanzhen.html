@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta name="keywords" content="手机,电量,手机还有多久关机,手机剩余电量,在线,小工具,电量查询">
+    <meta name="description" content="在线看手机剩余电量、电量剩余使用时间、查看是否正在充电">
+    <%- include('../../common/head', {title:'手机电量查询工具-在线看手机剩余电量'}) %>
+</head>
+
+<body>
+    <%- include('../../common/header', {title: '手机电量查询工具', desc: '在线看手机剩余电量、电量剩余使用时间、查看是否正在充电',  bigBanner:false}) %>
+    <div class="size am-container" style="margin-bottom: 24px;">
+        <div class="am-g">
+            <div class="am-u-sm-8 am-u-lg-4 am-u-sm-centered">
+                <img id="arrow" style="width: 100%;display: block;margin:auto;" src="/assets/aw.png">
+            </div>
+        </div>
+    </div>
+    <%- include('../../common/recoms', {tools:tools}) %>
+    <%- include('../../common/body') %>
+    <%- include('../../common/footer') %>
+</body>
+
+</html>
+
+<script>
+    if (window.DeviceOrientationEvent) {//返回一个DeviceOrientationEvent对象
+        window.addEventListener('deviceorientation', DeviceOrientationHandler, false);///添加监听事件
+    } else {
+        alert("您的浏览器不支持DeviceOrientation");
+    }
+    var arrow = $('#arrow');
+    function DeviceOrientationHandler(event) {
+        alpha = event.alpha; //Z轴方向
+        var beta = event.beta,//X轴方向
+            gamma = event.gamma;//Y轴方向
+
+        if (alpha != null) {
+            var xxx = "rotate(" + alpha + "deg)";
+            arrow.css('transform', xxx);
+            arrow.css('webkitTransform', xxx);
+        }
+    }
+</script>

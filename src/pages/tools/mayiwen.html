@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta name="keywords" content="菊花文,菊花文生成器,蚂蚁文,蚂蚁文生成器,菊花文转汉字,菊花文互转,QQ乱码文字生成">
+    <meta name="description" content="在线生成菊花文字，将普通文字快速转换成菊花文(也就是蚂蚁文)，菊花文转换普通文字。可将这写文字直接复制到QQ、微信、微博中使用。">
+    <%- include('../../common/head', {title:'菊花文生成|蚂蚁文生成'}) %>
+</head>
+
+<body>
+    <%- include('../../common/header', {title: '菊花文蚂蚁文生成器', desc: '在线生成菊花文、蚂蚁文生成',  bigBanner:false}) %>
+    <div class="am-container" style="padding: 8px;margin-top:1px;">
+        <textarea class="am-g-lg-12" id="textarea" rows="14" style="width:100%;border:0;margin-bottom:12px;"
+            placeholder="请输入普通文字或菊花文">好乎在线菊花文转换工具：请输入简体字,点击下面字按钮进行在线转换</textarea>
+        <button id="s2t_btn" class="am-btn am-btn-default am-btn-success">转菊花文</button>
+        <button id="t2s_btn" class="am-btn am-btn-default am-btn-primary">转正常汉字</button>
+        <button id="clean_btn" class="am-btn am-btn-default">清空</button>
+    </div>
+    <%- include('../../common/recoms', {tools:tools}) %>
+    <%- include('../../common/body') %>
+    <%- include('../../common/footer') %>
+</body>
+
+<script>
+    function toMY(text) {
+        var textArr = [''];
+        for (var i = 0; i < text.length; i++) {
+            textArr.push(text[i]);
+        }
+        textArr.push('');
+        return textArr.join('҉');
+    }
+
+    //转菊花
+    $('#s2t_btn').click(function(){
+        var text = $('textarea').val();
+        text = toMY(text);
+        $('textarea').val(text)
+    });
+    //去菊花
+    $('#t2s_btn').click(function(){
+        var text = $('textarea').val();
+        var reg = new RegExp('҉', 'g');
+        text = text.replace(reg, '');
+        $('textarea').val(text)
+    });
+</script>
+
+</html>

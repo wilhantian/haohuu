@@ -5,8 +5,10 @@ body{
 .tool-card{
     background: #fff;
     padding: 8px;
-    border: 1px solid #ddd;
-    min-height: 98px;
+    overflow: hidden;
+    // border: 1px solid #ddd;
+    border-radius: 4px;
+    height: 98px;
     width: 100%;
     margin-bottom: 12px;
     display: block;
@@ -14,9 +16,14 @@ body{
     outline: none;
     color: #000;
     cursor:pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    transition-duration:0.6s;
+    a{
+        height: 98px;
+    }
 }
 .tool-card:hover{
-    box-shadow: 0px 0px 8px #d3d3d3;
+    box-shadow: 0 2px 10px rgba(0,0,0,.2);
 }
 .tool-card > .title{
     display: flex;

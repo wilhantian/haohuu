@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta name="keywords" content="二手房贷款计算器,二手房贷计算,二手房,买房二手房计算">
+	<meta name="description" content="一款二手房贷款计算器,最新政策计算,靠谱的二手房计算器">
+	<%- include('../../common/head', {title:'二手房贷款计算器'}) %>
+	<link rel="stylesheet" href="/css/sehuandianzu.css">
+
+	<!-- <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css"> -->
+</head>
+
+<body>
+	<%- include('../../common/header', {title: '二手房贷款计算器', desc: '在线二手房贷款计算器', bigBanner:false}) %>
+	<div class="am-container">
+		<div class="am-u-lg-12">
+			<div class="am-u-lg-12">
+				<div class="am-alert am-alert-warning">只支持计算满五唯一！</div>
+				<div class="am-input-group am-u-lg-12">
+					<label for="a">总价</label>
+					<input type="email" class="am-form-field" id="a" placeholder="总价">
+				</div>
+				<div class="am-input-group am-u-lg-12">
+					<label for="b">评估比例%</label>
+					<input type="email" class="am-form-field" id="b" placeholder="评估比例" value="85">
+				</div>
+				<div class="am-input-group am-u-lg-12">
+					<label for="c">贷款比例%</label>
+					<input type="email" class="am-form-field" id="c" placeholder="贷款比例" value="85">
+				</div>
+				<div class="am-input-group am-u-lg-12">
+					<label for="d">中介费%</label>
+					<input type="email" class="am-form-field" id="d" placeholder="贷款比例" value="2.7">
+				</div>
+				<div class="am-input-group am-u-lg-12">
+					<label for="e">首套 / 二套</label>
+					<select id="e" class="am-form-field">
+						<option>首套</option>
+						<option>二套</option>
+					</select>
+				</div>
+				<br>
+				<button class="am-btn am-btn-secondary" style="margin-left:12px;margin-top:12px;">计算</button>
+				<br><br>
+				<div class="alert alert-info" role="alert">
+					<h1>结果：<span id="result"></span></h1>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<%- include('../../common/recoms', {tools:tools}) %>
+	<%- include('../../common/body') %>
+	<%- include('../../common/footer') %>
+	<script>
+		$(document).ready(function () {
+			$("button").click(function () {
+				var a = $("#a").val(),
+					b = $("#b").val(),
+					c = $("#c").val(),
+					d = $("#d").val(),
+					e = $("#e").val(),
+					r = 0;
+				r = a - a * (b / 100) * c / 100 + a * (b / 100) * c / 100 * (e === "首套" ? 35 / 100 : 50 / 100) + a * (e === "首套" ? 1 / 100 : 3 / 100) + a * d / 100;
+				$("#result").text(r + "元");
+			});
+		})
+			// $();
+	</script>
+</body>
+
+</html>

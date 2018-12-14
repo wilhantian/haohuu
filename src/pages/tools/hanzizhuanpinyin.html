@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta name="keywords" content="汉字,汉语,拼音,在线,转换,多音字,声调拼音">
+    <meta name="description" content="一款在线将汉字转换为拼音，支持多音字，快速准确的工具。">
+    <%- include('../../common/head', {title:'汉字转拼音'}) %>
+</head>
+
+<body>
+    <%- include('../../common/header', {title: '汉字转拼音', desc: '在线汉字转拼音工具',  bigBanner:false}) %>
+    <div class="am-container" style="padding: 8px;margin-top:1px;">
+        <textarea class="am-g-lg-12" id="textarea" rows="10" style="width:100%;border:0;margin-bottom:12px;"
+            placeholder="请输入要转换成拼音的文字">好乎在线在线汉字转拼音工具</textarea>
+        <button id="ok_btn" class="am-btn am-btn-default am-btn-success">转拼音</button>
+        <button id="clean_btn" class="am-btn am-btn-default">清空</button>
+
+        <blockquote id="blockquote"></blockquote>
+    </div>
+    <%- include('../../common/recoms', {tools:tools}) %>
+    <%- include('../../common/body') %>
+    <%- include('../../common/footer') %>
+</body>
+
+<script src="/assets/js/pinyin.js"></script>
+<script>
+    //转菊花
+    $('#ok_btn').click(function(){
+        var text = $('textarea').val();
+        text = Utils.CSpell.getSpell(text,function(charactor,spell){
+            return spell[0];
+        });
+        $('#blockquote').text(text);
+        // $('textarea').val(text);
+    });
+    //去菊花
+    $('#clean_btn').click(function(){
+        $('textarea').val('');
+    });
+</script>
+
+</html>

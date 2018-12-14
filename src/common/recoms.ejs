@@ -1,0 +1,9 @@
+<div class="am-container" style="margin-top:14px;margin-bottom:14px;opacity: 0.8;">
+    <hr>
+    <%
+    for(var i=0; i<tools.length; i++){
+        var tool = tools[i];
+    %>
+    <a href="<%=tool.link%>" class="am-badge am-badge-primary am-round" style="font-weight:;margin-bottom:6px;background: <%=tool.color%>;"><%=tool.name%></a>
+    <% } %>
+</div>

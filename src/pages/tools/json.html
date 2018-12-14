@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta name="keywords" content="在线,JSON,JSON 校验,格式化,xml转json 工具,在线工具,json视图,可视化,程序,服务器,域名注册,正则表达式,测试,在线json格式化工具,json 格式化,json格式化工具,json字符串格式化,json 在线查看器,json在线,json 在线验证,json tools online,在线文字对比工具">
+    <meta name="description" content="在线,JSON,JSON 校验,格式化,xml转json 工具,在线工具,json视图,可视化,程序,服务器,域名注册,正则表达式,测试,在线json格式化工具,json 格式化,json格式化工具,json字符串格式化,json 在线查看器,json在线,json 在线验证,json tools online,在线文字对比工具">
+    <%- include('../../common/head', {title:'JSON校验格式化工具'}) %>
+
+    <link href="/assets/jsonedit/jsoneditor.min.css" rel="stylesheet" type="text/css">
+    <script src="/assets/jsonedit/jsoneditor.min.js"></script>
+    <style type="text/css">
+        #jsoneditor {
+            font-family: sans-serif;
+            width: 100%;
+            height: 500px;
+            display: inline-block;
+        }
+        .jsoneditor-outer.has-main-menu-bar.has-status-bar{
+            background: #b4ca65;
+        }
+        .jsoneditor.jsoneditor-mode-code{
+            border: 1px solid #90a93a;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('../../common/header', {title: 'JSON校验格式化工具', desc: '支持JSON格式化美化、JSON压缩、JSON自动纠错、JSON语法提示、额外支持JSON树形结构预览、JSON表单结构预览',  bigBanner:false}) %>
+
+    <div class="am-container imageholder" style="padding: 8px;">
+        <div id="jsoneditor"></div>
+        <blockquote>
+                JSON(JavaScript Object Notation, JS 对象简谱) 是一种轻量级的数据交换格式。它基于 ECMAScript (欧洲计算机协会制定的js规范)的一个子集，采用完全独立于编程语言的文本格式来存储和表示数据。简洁和清晰的层次结构使得 JSON 成为理想的数据交换语言。 易于人阅读和编写，同时也易于机器解析和生成，并有效地提升网络传输效率。
+        </blockquote>
+    </div>
+    <%- include('../../common/recoms', {tools:tools}) %>
+    <%- include('../../common/body') %>
+    <%- include('../../common/footer') %>
+
+    <script>
+        var json = {
+            "array": [1, 2, 3],
+            "boolean": true,
+            "null": null,
+            "number": 123,
+            "object": { "a": "b", "c": "d" },
+            "string": "你可以点击上方工具栏按钮进行「格式化」、「压缩」、「自动纠错」、「选择编辑模式」",
+        };
+
+        var editor = new JSONEditor(document.getElementById('jsoneditor'), {
+            mode: 'code',
+            modes: ['code', 'form', 'text', 'tree', 'view'], // allowed modes
+            onError: function (err) {
+            },
+            onChangeText: function (jsonString) {
+            }
+        }, json);
+    </script>
+</body>
+
+</html>
+
+
+</html>

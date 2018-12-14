@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta name="keywords" content="时间,当前时间,几点了,现在几点了,今天周几,今天几号,几月">
+    <meta name="description" content="不知道现在的时间？就用这款在线时钟工具吧">
+    <%- include('../../common/head', {title:'在线时钟 - 现在几点了'}) %>
+
+    <script src="/assets/js/relationship.min.js"></script>
+    <style>
+        .clock-container{
+            text-align: center;
+            padding-top: 60px;
+            padding-bottom: 60px;
+        }
+        .time{
+            font-size: 70px;
+            line-height: 80px;
+            margin-bottom: 4px;
+        }
+        .date{
+            margin-top: 4px;
+            font-size: 20px;
+            line-height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('../../common/header', {title: '在线时钟', desc: '不知道现在的时间？就用这款在线时钟工具吧',  bigBanner:false}) %>
+
+    <div class="am-container imageholder" style="padding: 8px;">
+        <div class="clock-container">
+            <p class="time">11:11:11</p>
+            <p class="date">1993年4月27日</p>
+        </div>
+        <div class="am-g">
+        </div>
+    </div>
+    <%- include('../../common/recoms', {tools:tools}) %>
+    <%- include('../../common/body') %>
+    <%- include('../../common/footer') %>
+</body>
+
+</html>
+
+<script>
+    $(document).ready(function(){
+        function toZero(val){
+            if(val < 10){
+                return '0' + val;
+            }
+            return val;
+        }
+
+        function uodateNow(){
+            var date = new Date();
+            var h = toZero(date.getHours());
+            var m = toZero(date.getMinutes());
+            var s = toZero(date.getSeconds());
+            
+            $('.time').text(h+':'+m+':'+s);
+
+            var y = date.getFullYear()
+            var m = date.getMonth()+1;
+            var d = date.getDate();
+            var x = date.getDay();
+            if(x == 0) x = '日';
+            if(x == 1) x = '一';
+            if(x == 2) x = '二';
+            if(x == 3) x = '三';
+            if(x == 4) x = '四';
+            if(x == 5) x = '五';
+            if(x == 6) x = '六';
+
+            $('.date').text(y+"年"+m +"月"+d+"日 " + "星期"+x);
+        }
+        uodateNow();
+        setInterval(function(){
+            uodateNow();
+        }, 1000);
+    });
+</script>

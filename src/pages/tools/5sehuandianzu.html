@@ -1,13 +1,16 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
 <head>
-    <%- include('../../common/head', {title:'5色环电阻阻值在线计算器'}) %>
-    <link rel="stylesheet" href="/css/sehuandianzu.css">
     <meta name="keywords" content="色环电阻,色环,计算,5色环电阻,阻值">
     <meta name="description" content="该计算器可以进行5色环电阻阻值在线计算,在线计算">
+    <%- include('../../common/head', {title:'5色环电阻阻值在线计算器'}) %>
+    <link rel="stylesheet" href="/css/sehuandianzu.css">
 </head>
 
 <body>
-    <%- include('../../common/header') %>
-    <%- include('../../common/banner', {title: '5色环电阻阻值计算', desc: '5色环电阻阻值在线计算器'}) %>
+    <%- include('../../common/header', {title: '5色环电阻阻值计算', desc: '5色环电阻阻值在线计算器', bigBanner:false}) %>
+    <!-- <%- include('../../common/banner', {title: '5色环电阻阻值计算', desc: '5色环电阻阻值在线计算器'}) %> -->
     <div class="am-container sehuandianzu" style="padding: 8px;">
         <div class="knr">
             <div class="mobile_main">
@@ -811,7 +814,9 @@
             </div>
         </div>
     </div>
-
+    <%- include('../../common/recoms', {tools:tools}) %>
     <%- include('../../common/body') %>
     <%- include('../../common/footer') %>
 </body>
+
+</html>

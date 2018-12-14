@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta name="keywords" content="手机,震动,测试,跳弹,在线,在线震动,在线跳弹,振动棒,震动软件">
+    <meta name="description" content="一款在线的手机震动测试工具-手机在线跳弹震动器，模拟打电话神器，在线按摩棒，在线振动棒">
+    <%- include('../../common/head', {title:'在线手机震动器-手机震动测试'}) %>
+</head>
+
+<body>
+    <%- include('../../common/header', {title: '在线手机震动器', desc: '在线手机震动器 手机震动测试 在线震动工具 在线的震动软件',  bigBanner:false}) %>
+    <div class="size am-container" style="margin-bottom: 24px;">
+        <div class="am-g">
+            <div class="am-u-sm-12 am-u-lg-8 am-u-sm-centered">
+                <div id="danger" class="am-alert am-alert-danger" data-am-alert style="display: none;">
+                    你的浏览器不支持震动
+                </div>
+                <div class="am-input-group am-input-group-default">
+                    <span class="am-input-group-label">
+                        震动时间(秒)
+                    </span>
+                    <input id="onceTime" type="number" class="am-form-field" placeholder="一次震动几秒">
+                </div>
+                <div class="am-input-group am-input-group-default">
+                    <span class="am-input-group-label">
+                        震动间隔(秒)
+                    </span>
+                    <input id="stopTime" type="number" class="am-form-field" placeholder="几秒震动一次">
+                </div>
+            </div>
+            <div class="am-u-sm-12 am-u-lg-8 am-u-sm-centered">
+                <button id="start" class="am-btn am-btn-success am-round" style="display: block;margin:auto; width: 100%;margin-top:12px;">开始</button>
+                <button id="stop" class="am-btn am-btn-danger am-round" style="display: block;margin:auto; width: 100%;margin-top:12px;">停止</button>
+            </div>
+        </div>
+    </div>
+    <%- include('../../common/recoms', {tools:tools}) %>
+    <%- include('../../common/body') %>
+    <%- include('../../common/footer') %>
+</body>
+
+</html>
+
+<script>
+    if(!navigator || !navigator.vibrate){
+        $('#danger').show();
+    }
+    var handler = undefined;
+    $('#start').click(function(){
+        clearInterval(handler);
+
+        var onceTime = $('#onceTime').val();
+        var stopTime = $('#stopTime').val();
+
+        onceTime = parseFloat(onceTime);
+        stopTime = parseFloat(stopTime);
+
+        handler = setInterval(function(){
+            navigator.vibrate([onceTime * 1000]);
+        }, (onceTime+stopTime) * 1000);
+    });
+    $('#stop').click(function(){
+        clearInterval(handler);
+    });
+</script>

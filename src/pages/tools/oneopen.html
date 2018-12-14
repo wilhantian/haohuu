@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta name="keywords" content="网址批量打开,如何迅速打开多个URL,怎样一次性打开一批网址,怎样一下打开多个网站,怎样批量打开一批超链接">
+    <meta name="description" content="这是一款网址批量打开工具，可以在线快速批量打开指定的网站网页，一键批量打开大量链接，直接在浏览器里使用！可保存您的网站，下次更方便使用。">
+    <%- include('../../common/head', {title:'网址批量打开工具'}) %>
+</head>
+
+<body>
+    <%- include('../../common/header', {title: '网址批量打开工具', desc: '一键打开多个网站、省时、省力', bigBanner:false}) %>
+    <div class="am-container" style="padding: 8px;">
+        <button id="open" type="button" class="am-btn am-btn-danger am-radius am-btn-xl" style="width: 100%;margin-bottom:14px">一键打开</button>
+        <div style="text-align: center;">
+            <a id="favorite" class="am-btn am-btn-success am-btn-xs">收藏(Ctrl+D)</a>
+        </div>
+        <blockquote>
+            使用前请关闭浏览器"弹出窗口拦截"功能<br>
+            工具自动保存上次打开的网站,方便您下次直接使用
+        </blockquote>
+        <textarea id="textarea" rows="22" style="width:100%;border:0;" placeholder="请输入网址,一个网址一行">
+https://www.baidu.com/
+http://www.sina.com.cn/
+http://www.163.com/
+        </textarea>
+    </div>
+    <%- include('../../common/recoms', {tools:tools}) %>
+    <%- include('../../common/body') %>
+    <%- include('../../common/footer') %>
+</body>
+
+<script>
+    $(document).ready(function () {
+        var texts = localStorage.getItem('_oneopen_urls');
+        if(texts && texts.length > 0){
+            $('#textarea').val(texts);
+        }
+
+        function openUrls(urls) {
+            for (var i = 0; i < urls.length; i++) {
+                var url = urls[i];
+                window.open(url, '_blank');
+            }
+        }
+
+        $('#open').click(function () {
+            // 取得urls
+            var texts = $('#textarea').val();
+            texts = texts.trim();
+            var urls = texts.split('\n');
+            for (var i = 0; i < urls.length; i++) {
+                urls[i] = urls[i].trim();
+                if(urls[i].indexOf('http://') == -1 && urls[i].indexOf('https://') == -1){
+                    urls[i] = 'http://' + urls[i];
+                }
+            }
+            openUrls(urls);
+
+            localStorage.setItem('_oneopen_urls', texts);
+        });
+
+        $('#favorite').click(function () {
+            addFavorite();
+        });
+        function addFavorite() {
+            var url = window.location;
+            var title = document.title;
+            var ua = navigator.userAgent.toLowerCase();
+            if (ua.indexOf("msie 8") > -1) {
+                external.AddToFavoritesBar(url, title, '');//IE8
+            } else {
+                try {
+                    window.external.addFavorite(url, title);
+                } catch (e) {
+                    try {
+                        window.sidebar.addPanel(title, url, "");//firefox
+                    } catch (e) {
+                        alert("加入收藏失败，请使用Ctrl+D进行添加");
+                    }
+                }
+            }
+        };
+    });
+</script>
+
+</html>

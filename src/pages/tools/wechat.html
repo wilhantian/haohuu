@@ -4,20 +4,20 @@
         return BASE_URL + url;
     }
 %>
+<!DOCTYPE html>
+<html lang="zh-CN">
 
 <head>
-    <%- include('../../common/head', {title:'微信对话生成器|微信对话生成器在线|微信聊天生成器|微信对话在线制作|微信对话框生成器|无水印'}) %>
     <meta name="keywords" content="微信对话生成器app,微信对话app,微信对话软件版,微信对话转账客户端,微信转账生成器app,无水印,在线微信对话,在线微信对话转账,微信聊天在线生成器,微信对话截图制作">
     <meta name="description" content="一款娱乐性截图软件,微信营销的好助手,制作微商最需要的微信对话、转账等各种图,界面简单易用无水印">
+    <%- include('../../common/head', {title:'微信对话生成器|微信对话生成器在线|微信聊天生成器|微信对话在线制作|微信对话框生成器|无水印'}) %>
     <link href="<%=getBaseUrl('combine.min.css')%>" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<%=getBaseUrl('common.css')%>">
 </head>
-<!DOCTYPE html>
-<html>
 
 <body>
-    <%- include('../../common/header') %>
-    <%- include('../../common/banner', {title: '微信对话生成器', desc: '一款娱乐性截图软件,微信营销的好助手'}) %>
+    <%- include('../../common/header', {title: '微信对话生成器', desc: '一款娱乐性截图软件,微信营销的好助手', bigBanner:false}) %>
+    <!-- <%- include('../../common/banner', {title: '微信对话生成器', desc: '一款娱乐性截图软件,微信营销的好助手'}) %> -->
     <div id="wrapper">
         <div id="page-wrapper">
             <div class="row">
@@ -30,6 +30,7 @@
             </div>
             <div class="row" style="position:relative;padding: 0 15px;">
                 <div class="panel-body panel-wx-tab">
+                    <%- include('../../common/recoms', {tools:tools}) %>
                     <ul class="nav nav-tabs">
                         <li class="active">
                             <a href="./wxchat.html#w1" data-toggle="tab">外观设置</a></li>

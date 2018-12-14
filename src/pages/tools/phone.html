@@ -1,13 +1,16 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
 <head>
-    <%- include('../../common/head', {title:'手机、电话号码查询'}) %>
-    <link rel="stylesheet" href="/css/phone.css">
     <meta name="keywords" content="手机号码归属地,电话号码查询">
     <meta name="description" content="手机号码归属地,电话号码归属地查询,常用服务电话查询">
+    <%- include('../../common/head', {title:'手机、电话号码查询'}) %>
+    <link rel="stylesheet" href="/css/phone.css">
 </head>
 
 <body>
-    <%- include('../../common/header') %>
-    <%- include('../../common/banner', {title: '手机、电话号码查询', desc: '手机、电话号码归属地查询，常用服务电话查询'}) %>
+    <%- include('../../common/header', {title: '手机、电话号码查询', desc: '手机、电话号码归属地查询，常用服务电话查询',  bigBanner:false}) %>
+    <!-- <%- include('../../common/banner', {title: '手机、电话号码查询', desc: '手机、电话号码归属地查询，常用服务电话查询'}) %> -->
     <div class="am-container phone" style="padding: 8px;">
         <div class="am-u-lg-12" style="margin-bottom: 30px;text-align: center;">
             <div class="am-input-group am-input-group-secondary" style="max-width: 420px;margin: auto;">
@@ -183,7 +186,7 @@
             </div>
         </div>
     </div>
-
+    <%- include('../../common/recoms', {tools:tools}) %>
     <%- include('../../common/body') %>
     <%- include('../../common/footer') %>
 </body>
@@ -199,7 +202,7 @@
                 success: function (data) {
                     var result = JSON.stringify(data); //json对象转成字符串
                     console.log(data);
-                    if(data && data.mts){
+                    if (data && data.mts) {
                         $('#rest-tel').text(data.telString);
                         $('#rest-province').text(data.province);
                         $('#rest-cat').text(data.catName);
@@ -209,7 +212,7 @@
                         $('#tel-warning').hide();
                         $('#rest-group').show();
                     }
-                    else{
+                    else {
                         $('#tel-warning').show();
                         $('#rest-group').hide();
                     }
@@ -218,3 +221,5 @@
         });
     });
 </script>
+
+</html>
